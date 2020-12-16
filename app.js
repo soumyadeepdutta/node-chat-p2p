@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const express = require('express');
 const authMiddleware = require('./middlewares/auth');
 const userRouter = require('./routes/userRouter');
@@ -16,6 +17,7 @@ mongoose.connect(process.env.DB_CONNECT, {
 
 // middlewares
 app.use(express.json())
+app.use(helmet());
 app.use('/api/auth', authMiddleware);
 // routes
 app.use('/api/users', userRouter);

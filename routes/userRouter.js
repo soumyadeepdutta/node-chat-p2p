@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const router = require('express').Router();
 const {User, validate} = require('../models/user');
@@ -25,8 +26,11 @@ router.post('/register', async (req, res) => {
 
     await user.save();
 
+    // generate authentication token
+    const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+
     // loadash can be used
-    res.send({
+    res.header('X-Auth-Token', token).send({
         _id: user._id,
         name: user.name,
         email: user.email
