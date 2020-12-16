@@ -18,7 +18,7 @@ mongoose.connect(process.env.DB_CONNECT, {
 // middlewares
 app.use(express.json())
 app.use(helmet());
-app.use('/api/auth', authMiddleware);
+// app.use('/api/auth', authMiddleware);
 // routes
 app.use('/api/users', userRouter);
 
