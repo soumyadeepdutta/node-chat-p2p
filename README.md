@@ -8,9 +8,9 @@ The database used id MongoDB and authentication is done using JWT.
 1. User model
 2. MongoDB connection
 3. User register
+4. User login and authentication with JWT
 
 ## Todo
-1. User login
 2. Send message
 
 ## Usage
